@@ -1,32 +1,23 @@
-var Todos = require("../models/todoModel");
+var Users = require("../models/userModel");
 
 module.exports = function(app) {
 
-    app.get("/api/initTodos", function(req, res) {
+    app.get("/api/initAdminUsers", function(req, res) {
 
         // seed database
-        var starterTodos = [
+        var adminUsers = [
             {
-                username: "molly",
-                todo: "Buy milk",
-                isDone: false,
-                hasAttachment: false
-            },
-            {
-                username: "sammy",
-                todo: "Feed dog",
-                isDone: false,
-                hasAttachment: false
-            },
-            {
-                username: "betty",
-                todo: "Learn node",
-                isDone: false,
-                hasAttachment: false
+                login: "admin",
+                password: "admin",
+                lastname: "admin",
+                firstname: "minibean",
+                email: "",
+                mobile: "",
+                created_date: new Date()
             }
         ];
 
-        Todos.create(starterTodos, function(err, results) {
+        Users.create(adminUsers, function(err, results) {
             res.send(results);
         })
 
